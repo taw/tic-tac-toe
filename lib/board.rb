@@ -22,4 +22,10 @@ class Board
       not @contents.has_key?(name)
     end
   end
+
+  def play(name, value)
+    raise "No such field: #{name}" unless fields.include?(name)
+    raise "Already filled: #{name}" if @contents.has_key?(name)
+    Board.new(@contents.merge(name => value))
+  end
 end

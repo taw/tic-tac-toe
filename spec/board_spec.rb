@@ -38,4 +38,27 @@ describe Board do
     expect{ Board.new["D4"] }.to raise_error("No such field: D4")
     expect{ Board.new("D4" => "🐧") }.to raise_error("No such field: D4")
   end
+
+  context "playing more moves" do
+    let(:board) { Board.new(
+      "A1" => "🐈",
+      "A3" => "🐈",
+      "B3" => "🐩",
+    )}
+    it "playing empty field" do
+      new_board = board.play("C2", "🐒")
+      expect(new_board["A1"]).to eq("🐈")
+      expect(new_board["A2"]).to eq(nil)
+      expect(new_board["C2"]).to eq("🐒")
+      expect(board["C2"]).to eq(nil)
+    end
+
+    it "playing field with stuff on it" do
+      expect{ board.play("A1", "🐒") }.to raise_error("Already filled: A1")
+    end
+
+    it "playing invalid field" do
+      expect{ board.play("D4", "🐒") }.to raise_error("No such field: D4")
+    end
+  end
 end
