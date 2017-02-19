@@ -61,4 +61,43 @@ describe Board do
       expect{ board.play("D4", "🐒") }.to raise_error("No such field: D4")
     end
   end
+
+  context "#has_winning_line?" do
+    context "empty board" do
+      let(:board) { Board.new }
+      it "nobody has winning lines" do
+        expect(board.has_winning_line?("🐈")).to be false
+      end
+    end
+
+    context "filled board" do
+      let(:board) { Board.new(
+        "A1" => "🐈",
+        "A3" => "🐈",
+        "A2" => "🐈",
+        "B3" => "🐩",
+        "C1" => "🐩",
+      ) }
+      it "🐈 has winning line" do
+        expect(board.has_winning_line?("🐈")).to be true
+        expect(board.has_winning_line?("🐩")).to be false
+      end
+    end
+
+    context "overfilled board" do
+      let(:board) { Board.new(
+        "A1" => "🐈",
+        "A2" => "🐈",
+        "A3" => "🐈",
+        "B1" => "🐩",
+        "B2" => "🐩",
+        "B3" => "🐩",
+      ) }
+      it "🐈 has winning line" do
+        expect(board.has_winning_line?("🐈")).to be true
+        expect(board.has_winning_line?("🐩")).to be true
+        expect(board.has_winning_line?("🐎")).to be false
+      end
+    end
+  end
 end

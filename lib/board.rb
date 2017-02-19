@@ -12,6 +12,28 @@ class Board
     ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
   end
 
+  def winning_lines
+    [
+      # columns
+      ["A1", "A2", "A3"],
+      ["B1", "B2", "B3"],
+      ["C1", "C2", "C3"],
+      # rows
+      ["A1", "B1", "C1"],
+      ["A2", "B2", "C2"],
+      ["A3", "B3", "C3"],
+      # diagonals
+      ["A1", "B2", "C3"],
+      ["A3", "B2", "C1"],
+    ]
+  end
+
+  def has_winning_line?(value)
+    winning_lines.any? do |line|
+      line.all?{|name| self[name] == value}
+    end
+  end
+
   def [](name)
     raise "No such field: #{name}" unless fields.include?(name)
     @contents[name]
