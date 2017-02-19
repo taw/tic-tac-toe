@@ -33,6 +33,14 @@ class Game
     check_if_game_finished
   end
 
+  def play_full_game
+    until finished?
+      puts BoardView.new(@board).to_s
+      next_play
+    end
+    puts "Result is: #{@result}"
+  end
+
 private
 
   def check_if_game_finished

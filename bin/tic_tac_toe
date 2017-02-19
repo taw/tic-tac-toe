@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/tic_tac_toe"
+
+game = Game.new(
+  HumanPlayer.new("x"),
+  ComputerPlayer.new("o"),
+)
+
+game.play_full_game
