@@ -1,6 +1,6 @@
 # Always playing on first empty field
 describe ComputerPlayer do
-  let(:player) { ComputerPlayer.new("🐈") }
+  let(:player) { ComputerPlayer.new("🐈", "🐷") }
   context "empty board" do
     let(:board) { Board.new }
     it "plays A1" do

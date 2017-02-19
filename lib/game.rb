@@ -38,6 +38,7 @@ class Game
       puts BoardView.new(@board).to_s
       next_play
     end
+    puts BoardView.new(@board).to_s
     puts "Result is: #{@result}"
   end
 

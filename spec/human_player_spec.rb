@@ -1,5 +1,5 @@
 describe HumanPlayer do
-  let(:player) { HumanPlayer.new("🐈") }
+  let(:player) { HumanPlayer.new("🐈", "🐷") }
   let(:board) { Board.new }
   let(:output) { $stdout.string }
 

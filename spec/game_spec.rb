@@ -1,6 +1,6 @@
 describe Game do
-  let(:player_a) { ComputerPlayer.new("🐈") }
-  let(:player_b) { ComputerPlayer.new("🐒") }
+  let(:player_a) { ComputerPlayer.new("🐈", "🐒") }
+  let(:player_b) { ComputerPlayer.new("🐒", "🐈") }
   let(:game) { Game.new(player_a, player_b) }
 
   context "starting a new game" do
